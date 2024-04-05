@@ -8,4 +8,4 @@ If you are just doing randomisation, you can jump straight to notebook 2.
 
 The rest of the repos contain the functions that are being used by the second notebook.
 
-## Copyright @2024 RTV team Happy Coding!!
+## Copyright @2024 Happy Coding!!
