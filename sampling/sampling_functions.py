@@ -39,6 +39,20 @@ def sample_village(df, village_counts, male_prop=0.6, female_prop=0.2, youth_pro
     # Combine target and reserve samples
     return pd.concat([target_samples, reserve_samples])
 
+# def get_final_df(df, village_counts, male_prop=0.6, female_prop=0.2, youth_prop=0.2, threshold=100):
+#     # Estimate total iterations based on village counts (assuming sampling per village)
+#     total_iterations = len(village_counts)
+
+#     with st.spinner("Generating Sampled Data..."):
+#         progress_bar = st.progress(0)
+#         df_sampled = sample_village(df.copy(), village_counts, male_prop, female_prop, youth_prop, threshold)
+
+#         # Update progress bar for each village processed
+#         for i in range(len(village_counts)):
+#             progress_bar.progress(i + 1 / total_iterations)
+
+#     return df_sampled
+
 def get_final_df(df, village_counts, male_prop=0.6, female_prop=0.2, youth_prop=0.2, threshold=100):
     df_sampled = sample_village(df.copy(), village_counts, male_prop, female_prop, youth_prop, threshold)
     return df_sampled

@@ -12,6 +12,21 @@ def get_final_df(df, village_counts, male_prop=0.6, female_prop=0.2, youth_prop=
 
 st.title("RTV AHS/BHS random sample generator")
 
+ # Print a note ensuring required columns are included
+columns_to_keep = [
+    'district',
+    'subcounty',
+    'parish_t',
+    'village',
+    'hhh_full_name',
+    'Household_Head_Age',
+    'Household_Head_Contact',
+    'Household_Head_Gender',
+    'hhid',
+]
+st.info(f"**Note:** Ensure your DATASET includes the following columns for successful processing: {',  '.join(columns_to_keep)}")
+
+
 uploaded_file = st.file_uploader("Upload your data file (CSV or Excel)")
 
 if uploaded_file is not None:
