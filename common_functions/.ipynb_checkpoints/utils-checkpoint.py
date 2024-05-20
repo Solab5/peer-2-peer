@@ -1,5 +1,6 @@
 ## This file contains the common files used in the notebooks
 import pandas as pd
+from pathlib import Path
 
 def gender_age_processing(df: pd.DataFrame):
     """
@@ -19,17 +20,24 @@ def gender_age_processing(df: pd.DataFrame):
     return df
 
 
-def read_file(path):
-    """
-    Takes a csv or excel path and returns a dataframe
-    """
-    file_extension = path.suffix.lower()
+def read_file(uploaded_file):
+  """
+  Takes a Streamlit uploaded_file object and returns a dataframe
+  """
+
+  # Extract filename and get extension
+  filename = uploaded_file.name
+  file_extension = Path(filename).suffix.lower()
+
+  if file_extension in ('.csv', '.xls', '.xlsx'):
     if file_extension == '.csv':
-        return pd.read_csv(path)
+      return pd.read_csv(uploaded_file)
     elif file_extension == '.xls' or file_extension == '.xlsx':
-        return pd.read_excel(path)
+      return pd.read_excel(uploaded_file)
     else:
-        raise ValueError("Unsupported file format. Only CSV and Excel files are supported.")
+      raise ValueError("Unsupported file format. Only CSV and Excel files are supported.")
+  else:
+      st.error("Unsupported file format. Only CSV and Excel files are supported.")
         
 def prepare_data(df):
     """
