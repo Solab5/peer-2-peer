@@ -22,7 +22,7 @@ columns_to_keep = [
     'Household_Head_Age',
     'Household_Head_Contact',
     'Household_Head_Gender',
-    'Spouse_name',
+    'Spouse_Name',
     'Telephone_Contact',
     'hhid',
 ]
