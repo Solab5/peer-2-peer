@@ -44,15 +44,17 @@ def prepare_data(df):
     Takes a dataframe and returns only the required columns
     """
     columns = [
-     'district',
-     'subcounty',
-     'parish_t',
-     'village',
-     'hhh_full_name',
-     'Household_Head_Age',
-     'Household_Head_Contact',
-     'Household_Head_Gender',
-     'hhid',
+        'district',
+        'subcounty',
+        'parish_t',
+        'village',
+        'hhh_full_name',
+        'Household_Head_Age',
+        'Household_Head_Contact',
+        'Household_Head_Gender',
+        'Spouse_Name',
+        'Telephone_Contact',
+        'hhid',
      ]
     df = df[columns]
     df_prepared = gender_age_processing(df.copy())
