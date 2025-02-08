@@ -12,3 +12,7 @@ env/
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
+*.xlsx
+
+*.ipynb
+

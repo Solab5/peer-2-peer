@@ -17,7 +17,12 @@ def sample_data(data, gender_group, sample_size_prop, label):
 def sample_village(df, village_counts, male_prop=0.6, female_prop=0.2, youth_prop=0.2, threshold=100):
     def get_samples(x):
         village_name = x['village'].iloc[0]
-        male_sample_size, female_sample_size, youth_sample_size = get_sample_sizes(village_counts.get(village_name, 0))
+        village_size = village_counts.get(village_name, 0)
+
+        if village_size <= 30:  # Check if the village has 30 or fewer households
+            return x.copy()  # Assign all households as targets without sampling
+
+        male_sample_size, female_sample_size, youth_sample_size = get_sample_sizes(village_size)
 
         males = sample_data(x.copy(), 'Male Headed', male_sample_size, 'Male Headed')
         females = sample_data(x.copy(), 'Female Headed', female_sample_size, 'Female Headed')
@@ -26,14 +31,14 @@ def sample_village(df, village_counts, male_prop=0.6, female_prop=0.2, youth_pro
         return pd.concat([males, females, youths])
 
     # Sample target data
-    target_samples = df.groupby('village',group_keys=False).apply(get_samples)
+    target_samples = df.groupby('village', group_keys=False).apply(get_samples)
     target_samples['status'] = 'target'
 
     # Drop target rows and get reserve data
     reserve_data = df.drop(target_samples.index)
 
     # Sample reserve data
-    reserve_samples = reserve_data.groupby('village',group_keys=False).apply(get_samples)
+    reserve_samples = reserve_data.groupby('village', group_keys=False).apply(get_samples)
     reserve_samples['status'] = 'reserve'
 
     # Combine target and reserve samples

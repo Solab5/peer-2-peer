@@ -58,13 +58,13 @@ if uploaded_file is not None:
         st.info(f"**Note:** Ensure your DataFrame includes the following columns for successful processing: {', '.join(columns_to_keep)}")
 
         # Optional: Allow configuration of sampling parameters
-        st.subheader("Sampling Parameters (Optional)")
-        st.info("Note that this proportion is only for villages with samples more than 100, those with less are already defaulted to 50%, 25% 25% ie Male Female and Youth respectively, Reach out to Analystics team in case these proportions change")
-        male_prop = st.slider("Male Proportion", min_value=0.0, max_value=1.0, step=0.05, value=0.6)
-        female_prop = st.slider("Female Proportion", min_value=0.0, max_value=1.0, step=0.05, value=0.2)
-        youth_prop = st.slider("Youth Proportion", min_value=0.0, max_value=1.0, step=0.05, value=0.2)
-
-        FINAL = get_final_df(df.copy(), village_counts, male_prop, female_prop, youth_prop)
+        # st.subheader("Sampling Parameters (Optional)")
+        # st.info("Note that this proportion is only for villages with samples more than 100, those with less are already defaulted to 50%, 25% 25% ie Male Female and Youth respectively, Reach out to Analystics team in case these proportions change")
+        # male_prop = st.slider("Male Proportion", min_value=0.0, max_value=1.0, step=0.05, value=0.6)
+        # female_prop = st.slider("Female Proportion", min_value=0.0, max_value=1.0, step=0.05, value=0.2)
+        # youth_prop = st.slider("Youth Proportion", min_value=0.0, max_value=1.0, step=0.05, value=0.2)
+        
+        FINAL = get_final_df(df.copy(), village_counts)
 
         st.write(f"Number of villages: {len(village_counts)}")
         st.dataframe(FINAL.head(10))  # Display a preview of the sampled data
