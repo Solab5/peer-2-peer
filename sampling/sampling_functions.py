@@ -8,7 +8,7 @@ def get_sample_sizes(village_count, threshold=100, male_prop=0.6, female_prop=0.
         return int(0.5 * 24), int(0.25 * 24), int(0.25 * 24)
     
 def sample_data(data, gender_group, sample_size_prop, label):
-    filtered_data = data.query("`Household_Head_Gender` == @label")
+    filtered_data = data.query("`HHHeadship` == @label")
     if len(filtered_data) <= sample_size_prop:
         return filtered_data.copy()  # Return all data if remaining is less than sample size
     else:
