@@ -16,7 +16,7 @@ def gender_age_processing(df: pd.DataFrame):
             else row['Household_Head_Gender'], axis=1)
         
         # Drop the unnecessary columns
-        df.drop(columns=['Gender'], inplace=True)
+        # df.drop(columns=['Gender'], inplace=True)
         df['HHHeadship'] = df['Household_Head_Gender']
     return df
 
@@ -55,6 +55,7 @@ def prepare_data(df):
         'hhh_full_name',
         'Household_Head_Age',
         'Household_Head_Contact',
+        'Gender',
         'HHHeadship',
         'Spouse_Name',
         'Telephone_Contact',
