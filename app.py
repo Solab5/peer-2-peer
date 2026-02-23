@@ -25,8 +25,12 @@ columns_to_keep = [
     'Household_Head_Age',
     'Household_Head_Contact',
     # 'Household_Head_Gender',
-    'Spouse_Name',
-    'Telephone_Contact',
+    'maritalstatus',
+    'spousename',
+    'spouse_sex',
+    'spouse_age',
+    'spouse_contact',
+    'home',
     'hhid',
 ]
 st.info(f"**Note:** Ensure your DATASET includes the following columns for successful processing: {',  '.join(columns_to_keep)}")
@@ -57,8 +61,12 @@ if uploaded_file is not None:
             'Household_Head_Age',
             'Household_Head_Contact',
             'HHHeadship',
-            'Spouse_Name',
-            'Telephone_Contact',
+            'maritalstatus',
+            'spousename',
+            'spouse_sex',
+            'spouse_age',
+            'spouse_contact',
+            'home',
             'hhid',
         ]
         st.info(f"**Note:** Ensure your DataFrame includes the following columns for successful processing: {', '.join(columns_to_keep)}")
